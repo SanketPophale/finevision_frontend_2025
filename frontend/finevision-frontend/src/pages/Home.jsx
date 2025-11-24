@@ -13,6 +13,7 @@ import ExpandableAbout from "../components/AboutExpand";
 import { blogsData } from "../data/blogData";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 import ReviewS from "./ReviewPage";
+import { Helmet } from "react-helmet";
 
 
 

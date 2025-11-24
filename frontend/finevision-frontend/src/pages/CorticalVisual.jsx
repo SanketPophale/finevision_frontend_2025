@@ -3,6 +3,7 @@ import { motion as Motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import cviImg from "../assets/visual11.png";
 import Navbar from "../components/Navbar";
+import { Helmet } from "react-helmet";
 
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 

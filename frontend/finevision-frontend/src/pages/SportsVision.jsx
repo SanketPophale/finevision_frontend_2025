@@ -2,6 +2,7 @@ import { motion as Motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import { Helmet } from "react-helmet";
 
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 

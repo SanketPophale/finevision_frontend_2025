@@ -2,6 +2,8 @@ import { motion as Motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Element } from "react-scroll";
+import React from "react";
+import { Helmet } from "react-helmet";
 
 export default function Reviews() {
   const [theme] = useState(() => localStorage.getItem("theme") || "dark");

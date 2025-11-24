@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import visualImg from "../assets/visual.jpg";
 import Navbar from "../components/Navbar";
+import { Helmet } from "react-helmet";
 
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 

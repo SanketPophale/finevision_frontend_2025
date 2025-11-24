@@ -3,6 +3,7 @@ import { motion as Motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import postImg from "../assets/post3.png"
+import { Helmet } from "react-helmet";
 
 export default function PostStrokePage() {
   const navigate = useNavigate();
