@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion as Motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function PatientForm() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -70,14 +73,26 @@ export default function PatientForm() {
 
     setLoading(false);
   }
-
+  
+    const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
+    
+    useEffect(() => {
+      if (theme === "light") document.documentElement.classList.remove("dark");
+      else document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", theme);
+    }, [theme]);
+    
+    const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+  
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-black flex items-center justify-center py-16 px-4">
+  <>
+  <Navbar theme={theme} toggleTheme={toggleTheme} navigate={navigate} />
+    <div className="pt-32 min-h-screen bg-gradient-to-b from-[#081229] via-[#132f56] to-[#1e3a8a] text-white flex flex-col items-center">
       <Motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-4xl bg-slate-900/70 backdrop-blur-md rounded-2xl border border-slate-700 shadow-2xl p-8"
+        className="w-full max-w-4xl bg-white/70 backdrop-blur-xl rounded-2xl border border-[#C8DFFF] shadow-[0_8px_30px_rgba(77,159,235,0.25)] p-8 text-[#0C1E3D]"
       >
         <h2 className="text-3xl font-extrabold text-center text-white mb-8 tracking-wide">
           🩺 FineVision - Patient Registration Form
@@ -87,7 +102,7 @@ export default function PatientForm() {
           {[
             { key: "firstName", placeholder: "First Name", type: "text" },
             { key: "lastName", placeholder: "Last Name", type: "text" },
-            { key: "age", placeholder: "Age", type: "number" },
+            { key: "age", placeholder: "Age", type: "text", inputMode: "numeric", pattern: "[0-9]*" },
             {
               key: "gender",
               placeholder: "Gender",
@@ -98,16 +113,31 @@ export default function PatientForm() {
             { key: "email", placeholder: "Email Address", type: "email" },
             {
               key: "service",
-              placeholder: "Which service would you like to avail?",
+              label: "Service Required",
               type: "select",
               options: [
-                "Vision Therapy",
-                "Contact Lens",
-                "Low Vision Aid",
-                "Comprehensive Vision Assessment",
-                "Digital Eyestrain Assessment",
-              ],
-            },
+              "Vision Therapy",
+              "Contact Lens",
+              "Low Vision Aid",
+              "Comprehensive Vision Assessment",
+              "Digital Eyestrain Assessment",
+             ],
+            render: (form, setForm) => (
+           <select
+             value={form.service}
+             onChange={(e) => setForm({ ...form, service: e.target.value })}
+             className="w-full px-4 py-3 bg-white/70 backdrop-blur-md border border-[#C8DFFF] rounded-lg text-[#0C1E3D] font-medium shadow-[0_4px_20px_rgba(77,159,235,0.15)] focus:outline-none focus:ring-2 focus:ring-[#4d9feb] focus:border-[#4d9feb] hover:border-[#4d9feb]/80 hover:shadow-[0_0_10px_rgba(77,159,235,0.2)] transition-all"
+           >
+             <option value="">Which service would you like to avail?</option>
+             <option value="Vision Therapy">Vision Therapy</option>
+             <option value="Contact Lens">Contact Lens</option>
+             <option value="Low Vision Aid">Low Vision Aid</option>
+             <option value="Comprehensive Vision Assessment">Comprehensive Vision Assessment</option>
+             <option value="Digital Eyestrain Assessment">Digital Eyestrain Assessment</option>
+            </select>
+          ),
+        }
+ 
           ].map((field) =>
             field.type === "select" ? (
               <select
@@ -179,6 +209,7 @@ export default function PatientForm() {
           <p className="text-center text-sky-300 mt-6 font-medium">{message}</p>
         )}
       </Motion.div>
-    </div>
+    </div>  
+  </>
   );
 }

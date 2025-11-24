@@ -1,103 +1,91 @@
 import { useState } from "react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-export default function EyeCare({ card, theme }) {
-  const [open, setOpen] = useState(false);
+export default function EyeCare({ cards, theme }) {
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((prev) => (prev + 1) % cards.length);
+  const prev = () => setIndex((prev) => (prev - 1 + cards.length) % cards.length);
 
   return (
-    <>
-      {/* ===== Closed Card ===== */}
-      <Motion.div
-        onClick={() => setOpen(true)}
-        whileHover={{ scale: 1.05, rotateY: 10 }}
-        transition={{ type: "spring", stiffness: 120, damping: 15 }}
-        className={`relative cursor-pointer w-[280px] sm:w-[320px] md:w-[360px] h-[420px] rounded-3xl shadow-2xl border overflow-hidden ${
-          theme === "light"
-            ? "bg-white border-[#E0E0E0]"
-            : "bg-white/10 border-white/20 backdrop-blur-md"
+    <section
+      className={`min-h-screen flex flex-col items-center justify-center px-6 md:px-16 py-20 ${
+        theme === "light"
+          ? "bg-[#FFFFFF] text-[#1F2E40]"
+          : "bg-gradient-to-b from-[#0b1332] via-[#1a2a5a] to-[#2a4a8b] text-white"
+      }`}
+    >
+      {/* ===== HEADING ===== */}
+      <h2
+        className={`text-4xl md:text-5xl font-extrabold mb-12 text-center ${
+          theme === "light" ? "text-[#1F2E40]" : "text-[#4d9feb]"
         }`}
-        style={{ transformStyle: "preserve-3d" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent" />
-        <div className="h-2/3 flex flex-col justify-center items-center">
-          <div className="h-16 w-16 rounded-2xl bg-white/10 border border-white/20 shadow-inner flex items-center justify-center text-3xl">
-            {card.icon}
-          </div>
-          <h3 className="mt-4 text-xl font-semibold">{card.title}</h3>
-          <p className="mt-3 text-sm opacity-80 px-6 text-center line-clamp-3">
-            {card.preview}
-          </p>
-        </div>
-        <div
-          className={`absolute bottom-0 w-full h-24 bg-gradient-to-t ${
-            theme === "light"
-              ? "from-[#F2C94C]/40 to-transparent"
-              : "from-indigo-500/30 to-transparent"
-          }`}
-        ></div>
-      </Motion.div>
+        Eye Care Services
+      </h2>
 
-      {/* ===== Modal (Opened Full Card) ===== */}
-      <AnimatePresence>
-        {open && (
+      {/* ===== CARD DISPLAY ===== */}
+      <div className="relative w-full max-w-4xl">
+        <AnimatePresence mode="wait">
           <Motion.div
-            className={`fixed inset-0 z-50 flex justify-center items-center ${
-              theme === "light" ? "bg-black/30" : "bg-black/50"
-            } backdrop-blur-sm`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setOpen(false)}
+            key={index}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className={`rounded-3xl shadow-2xl border px-8 py-10 md:px-12 md:py-16 ${
+              theme === "light"
+                ? "bg-white border-[#E0E0E0]"
+                : "bg-[#0f1638]/70 border-white/10 backdrop-blur-xl"
+            }`}
           >
-            <Motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 150, damping: 20 }}
-              onClick={(e) => e.stopPropagation()}
-              className={`relative w-[90%] md:w-[60%] max-h-[85vh] rounded-3xl shadow-2xl border flex flex-col ${
-                theme === "light"
-                  ? "bg-white text-[#1F2E40] border-[#E0E0E0]"
-                  : "bg-[#0f1638] text-white border-white/20"
-              }`}
-            >
-              {/* ===== Header (Sticky) ===== */}
-              <div className="sticky top-0 z-10 flex justify-between items-center p-6 border-b border-white/10 bg-inherit backdrop-blur-md">
-                <h3 className="text-2xl font-bold">{card.title}</h3>
-                <button
-                  className="text-lg px-3 py-1 rounded-full hover:bg-white/10 transition"
-                  onClick={() => setOpen(false)}
-                >
-                  ✕
-                </button>
+            {/* === Card Content === */}
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              {/* Icon or Image */}
+              <div className="flex-shrink-0 w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-to-tr from-[#4d9feb] to-[#6f42c1] flex items-center justify-center text-4xl shadow-lg">
+                {cards[index].icon}
               </div>
 
-              {/* ===== Scrollable Content ===== */}
-              <div className="flex-1 overflow-y-auto px-6 py-4 space-y-3 text-[15px] leading-relaxed scrollbar-thin scrollbar-thumb-[#6f42c1]/50 scrollbar-track-transparent">
-                {card.details.map((p, idx) => (
-                  <p key={idx} className="opacity-90">
-                    {p}
-                  </p>
-                ))}
+              {/* Text Content */}
+              <div className="flex-1 text-center md:text-left space-y-4">
+                <h3 className="text-2xl md:text-3xl font-bold">{cards[index].title}</h3>
+                <p className="text-[#4d9feb] font-medium">{cards[index].subtitle}</p>
+                <p className="italic opacity-90 leading-relaxed text-lg">
+                  {cards[index].details}
+                </p>
               </div>
-
-              {/* ===== Footer (Sticky) ===== */}
-              <div className="sticky bottom-0 z-10 bg-inherit border-t border-white/10 p-6 text-center backdrop-blur-md">
-                <button
-                  onClick={() => setOpen(false)}
-                  className={`px-6 py-3 rounded-full font-semibold ${
-                    theme === "light"
-                      ? "bg-[#F2C94C] text-[#1F2E40]"
-                      : "bg-gradient-to-r from-[#6f42c1] to-[#4d9feb] text-white"
-                  } hover:opacity-90 shadow-lg transition`}
-                >
-                  ← Go Back
-                </button>
-              </div>
-            </Motion.div>
+            </div>
           </Motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        </AnimatePresence>
+
+        {/* ===== NAVIGATION BUTTONS ===== */}
+        <button
+          onClick={prev}
+          className="absolute left-[-2rem] top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow-md transition"
+        >
+          <FaChevronLeft />
+        </button>
+
+        <button
+          onClick={next}
+          className="absolute right-[-2rem] top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full shadow-md transition"
+        >
+          <FaChevronRight />
+        </button>
+      </div>
+
+      {/* ===== PAGINATION DOTS ===== */}
+      <div className="flex gap-3 mt-10">
+        {cards.map((_, i) => (
+          <div
+            key={i}
+            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+              i === index ? "bg-[#4d9feb] w-6" : "bg-gray-500/50"
+            }`}
+          />
+        ))}
+      </div>
+    </section>
   );
 }

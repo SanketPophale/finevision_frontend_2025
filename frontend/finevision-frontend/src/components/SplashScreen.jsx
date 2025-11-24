@@ -15,7 +15,7 @@ export default function SplashScreen({ onFinish }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.2 }}
       transition={{ duration: 1.2, ease: "easeInOut" }}
-      className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-sky-100 via-blue-200 to-white"
+      className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-sky-100 via-blue-300 to-white"
     >
       
       {/* 🌟 Welcome Message */}

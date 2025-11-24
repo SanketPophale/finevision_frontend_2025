@@ -1,11 +1,18 @@
+import { useEffect, useState } from "react";
 import { motion as Motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import cviImg from "../assets/visual11.png"; // 📸 Add an appropriate image (rename if needed)
+import cviImg from "../assets/visual11.png";
+import Navbar from "../components/Navbar";
+
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function CorticalVisual() {
   const navigate = useNavigate();
 
-  // ✅ Navigate back to Vision Therapy section
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const goToVisionTherapy = () => {
     navigate("/");
     setTimeout(() => {
@@ -14,211 +21,313 @@ export default function CorticalVisual() {
     }, 500);
   };
 
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    if (theme === "light") document.documentElement.classList.remove("dark");
+    else document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#081229] via-[#132f56] to-[#1e3a8a] text-white flex flex-col items-center">
-      {/* ===== HERO IMAGE ===== */}
-      <div className="w-full relative overflow-hidden flex justify-center py-12">
-        <Motion.img
-          src={cviImg}
-          alt="Cortical Visual Impairment"
-          initial={{ opacity: 0, scale: 0.85, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          whileHover={{ scale: 1.03 }}
-          className="w-[80%] md:w-[65%] lg:w-[50%] rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-[#4d9feb]/40 object-cover"
-        />
+    <>
+      <Navbar theme={theme} toggleTheme={toggleTheme} navigate={navigate} />
 
-        {/* Floating Glow Effect */}
-        <Motion.div
-          className="absolute inset-0 -z-10 blur-[100px] bg-gradient-to-r from-blue-500/20 to-purple-600/20"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
+      <Helmet>
+  <title>Cortical Visual Impairment (CVI) Therapy in Pune | FineVision Eye Care</title>
 
-      {/* ===== CONTENT SECTION ===== */}
-      <div className="max-w-5xl px-6 md:px-10 pb-16 space-y-8">
-        <Motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-extrabold text-center text-[#4d9feb]"
-        >
-          Understanding Cortical Visual Impairment (CVI)
-        </Motion.h1>
+  <meta
+    name="description"
+    content="Specialized Cortical Visual Impairment (CVI) Vision Therapy in Pune at FineVision Eye Care. Improve visual attention, tracking, recognition, and brain–eye coordination for children with neurological visual challenges."
+  />
 
-        <p className="text-lg text-center text-gray-300 italic">
-          When the Eyes See, but the Brain Struggles to Interpret
-        </p>
+  <meta
+    name="keywords"
+    content="CVI therapy pune, cortical visual impairment treatment, neurological visual impairment, CVI specialist Pune, brain based vision therapy, visual processing disorder pune, child CVI treatment, vision therapy for CVI, finevision pune"
+  />
 
-        <div className="text-gray-200 text-xl leading-relaxed space-y-6">
-          <p>
-            Cortical Visual Impairment (CVI), also known as Cerebral Visual Impairment, is
-            a leading cause of visual impairment in children. Unlike traditional eye
-            conditions, CVI originates in the brain rather than the eyes. The eyes
-            themselves function normally, capturing light and sending signals through the
-            optic nerves, but damage to the brain’s visual processing areas disrupts how
-            this information is interpreted. This results in a range of visual challenges
-            that can affect daily activities, learning, and development.
-          </p>
+  <link rel="canonical" href="https://thefinevision.com/cortical-visual-impairment" />
 
-          <p>
-            CVI is not a disease but a neurological condition. With early intervention and
-            targeted support, visual skills can improve significantly over time. It’s
-            estimated that CVI accounts for up to <b>30% of visual impairments in children
-            under 3 years old</b>, making awareness crucial for parents, educators, and
-            healthcare providers.
-          </p>
+  
+  <meta property="og:title" content="Cortical Visual Impairment (CVI) Therapy | FineVision Pune" />
+  <meta
+    property="og:description"
+    content="Professional therapy for Cortical Visual Impairment (CVI) to improve visual attention, tracking, and recognition using individualized neuro-vision programs."
+  />
+  <meta property="og:image" content="https://thefinevision.com/eye.png" />
+  <meta property="og:url" content="https://thefinevision.com/cortical-visual-impairment" />
+  <meta property="og:type" content="article" />
 
-          <h2 className="text-2xl font-semibold text-[#F2C94C] pt-6">Causes of CVI</h2>
-          <p>
-            CVI typically stems from brain injuries or disruptions that affect the
-            posterior visual pathways, including the occipital lobe and higher-order
-            processing centres.
-          </p>
-          <ul className="list-disc list-inside space-y-2 pl-3 text-xl">
-            <li>
-              <b>Perinatal complications:</b> Hypoxic-ischemic encephalopathy (oxygen
-              deprivation at birth), prematurity, or low birth weight.
-            </li>
-            <li>
-              <b>Infections and illnesses:</b> Meningitis, encephalitis, or cytomegalovirus
-              (CMV) infections in infancy.
-            </li>
-            <li>
-              <b>Neurological disorders:</b> Cerebral palsy, epilepsy, hydrocephalus, or
-              traumatic brain injury.
-            </li>
-            <li>
-              <b>Genetic or developmental factors:</b> Rarely, it may be linked to Down
-              syndrome or metabolic disorders.
-            </li>
-          </ul>
+ 
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CVI (Cortical Visual Impairment) Therapy | FineVision Pune" />
+  <meta
+    name="twitter:description"
+    content="Advanced therapy for Cortical Visual Impairment to support brain-eye coordination and meaningful visual development."
+  />
+  <meta name="twitter:image" content="https://thefinevision.com/eye.png" />
+</Helmet>
 
-          <p>
-            These events damage the brain’s ability to integrate visual input with other
-            senses, leading to impaired perception rather than outright blindness.
-          </p>
 
-          <h2 className="text-2xl font-semibold text-[#F2C94C] pt-6">Symptoms and Signs</h2>
-          <p>
-            Symptoms of CVI vary widely and can fluctuate based on fatigue, environment, or
-            health. Children may have “good days” and “bad days” visually, which
-            distinguishes CVI from ocular impairments.
-          </p>
-          <ul className="list-disc list-inside space-y-2 pl-3 text-xl">
-            <li>
-              <b>Reduced visual acuity:</b> Difficulty seeing details, such as faces or
-              text, even with glasses.
-            </li>
-            <li>
-              <b>Visual attention challenges:</b> Staring at lights or edges instead of the
-              main focus; trouble tracking moving items.
-            </li>
-            <li>
-              <b>Field and perception issues:</b> Narrow visual fields, poor depth
-              perception, or sensitivity to clutter, light, or color contrasts.
-            </li>
-            <li>
-              <b>Higher-order deficits:</b> Struggles with recognizing familiar objects,
-              faces, or spatial relationships.
-            </li>
-            <li>
-              <b>Associated behaviors:</b> Preferring auditory or tactile input over visual
-              cues, or arching the back when overstimulated.
-            </li>
-          </ul>
-
-          <p>
-            Early detection is vital, as untreated CVI can impact cognitive, social, and
-            motor development.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-[#F2C94C] pt-6">Diagnosis of CVI</h2>
-          <p>Diagnosing CVI requires a multidisciplinary approach:</p>
-          <ul className="list-disc list-inside space-y-2 pl-3 text-xl">
-            <li>
-              <b>Comprehensive eye exam:</b> Ensures the eyes and optic nerves are healthy.
-            </li>
-            <li>
-              <b>Medical history review:</b> Birth complications, infections, or
-              neurological events.
-            </li>
-            <li>
-              <b>Neuroimaging:</b> MRI or CT scans to visualize brain damage in visual
-              pathways.
-            </li>
-            <li>
-              <b>Functional vision assessment:</b> Observation of real-world responses
-              using the <b>CVI Range Assessment</b>.
-            </li>
-            <li>
-              <b>Developmental evaluation:</b> Input from occupational therapists and
-              neurologists to gauge broader impact.
-            </li>
-          </ul>
-
-          <h2 className="text-2xl font-semibold text-[#F2C94C] pt-6">
-            Treatment and Management Strategies
-          </h2>
-          <p>
-            While there is no “cure” for CVI, proactive management can unlock a child’s
-            visual potential through neuroplasticity — the brain’s ability to rewire
-            itself.
-          </p>
-          <ul className="list-disc list-inside space-y-2 pl-3 text-xl">
-            <li>
-              <b>Vision Therapy:</b> Weekly sessions (1–2 hours) combined with home
-              programs to improve focus, tracking, and interpretation.
-            </li>
-            <li>
-              <b>Environmental Modifications:</b> Simplify surroundings, reduce clutter, use
-              bold colors, and control lighting to minimize overload.
-            </li>
-            <li>
-              <b>Multidisciplinary Support:</b> Occupational and physical therapy to improve
-              hand-eye coordination; educational interventions using visual aids,
-              audiobooks, and assistive tech.
-            </li>
-            <li>
-              <b>Medical Management:</b> Treat underlying issues like seizures to stabilize
-              visual performance.
-            </li>
-            <li>
-              <b>Parental Involvement:</b> Narrate visuals (“I see the red ball rolling”) and
-              encourage exploration at the child’s own pace.
-            </li>
-          </ul>
-
-          <h2 className="text-2xl font-semibold text-[#F2C94C] pt-6">
-            Living with CVI: Hope and Resources
-          </h2>
-          <p>
-            CVI presents challenges, but it doesn’t define a child’s future. With therapy
-            and supportive strategies, many children thrive academically and socially,
-            transforming visual hurdles into unique strengths such as heightened auditory
-            memory and problem-solving.
-          </p>
-
-          <h3 className="text-xl font-semibold text-[#F2C94C] pt-4">Seek Help If:</h3>
-          <ul className="list-disc list-inside space-y-2 pl-3 text-xl">
-            <li>Your child avoids eye contact or seems “blind” inconsistently.</li>
-            <li>Visual tasks take unusually long or cause frustration.</li>
-          </ul>
-        </div>
-
+      <div
+        className={`pt-32 min-h-screen flex flex-col items-center ${
+          theme === "light"
+            ? "bg-[#FFFFFF] text-[#1F2E40]"
+            : "bg-[#0a0f2c] text-white"
+        }`}
+      >
         {/* ===== BACK BUTTON ===== */}
-        <div className="text-center pt-10">
-          <Motion.button
-            onClick={goToVisionTherapy}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-3 rounded-full bg-gradient-to-r from-[#6f42c1] to-[#4d9feb] text-white font-semibold shadow-xl hover:shadow-[#4d9feb]/40 transition"
+        <div className="w-full max-w-5xl px-6 sm:px-10 md:px-12 pt-6">
+        <Motion.button
+        onClick={goToVisionTherapy}
+        whileHover={{ x: -3 }}
+        whileTap={{ scale: 0.97 }}
+       className={`text-lg font-bold transition-colors ${
+         theme === "light"
+        ? "text-gray-600 hover:text-gray-800"
+        : "text-gray-300 hover:text-white"
+    }`}
+  >
+    ← Go Back
+  </Motion.button>
+</div>
+        {/* ===== HERO IMAGE ===== */}
+        <div className="w-full relative overflow-hidden flex justify-center py-10 sm:py-14">
+          <Motion.img
+            src={cviImg}
+            alt="Cortical Visual Impairment"
+            initial={{ opacity: 0, scale: 0.85, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            whileHover={{ scale: 1.03 }}
+            className="w-[90%] sm:w-[70%] md:w-[60%] lg:w-[45%] rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-[#4d9feb]/40 object-cover"
+          />
+          <Motion.div
+            className="absolute inset-0 -z-10 blur-[100px] bg-gradient-to-r from-blue-500/20 to-purple-600/20"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        {/* ===== CONTENT ===== */}
+        <div className="max-w-5xl w-full px-6 sm:px-10 md:px-12 pb-20 space-y-8 text-center md:text-left">
+          <Motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white text-center leading-snug"
           >
-            ← Go Back to Vision Therapy
-          </Motion.button>
+            Cortical Visual Impairment (CVI)
+          </Motion.h1>
+
+          <p className="text-center italic text-base sm:text-lg text-gray-300">
+            When the Eyes See, but the Brain Struggles to Interpret
+          </p>
+
+          <div
+            className={`text-base sm:text-lg md:text-xl leading-relaxed ${
+              theme === "light" ? "text-[#2A3B5A]" : "text-gray-300"
+            } space-y-6`}
+          >
+            <p>
+              <b>Cortical Visual Impairment (CVI)</b>, also called{" "}
+              <b>Cerebral Visual Impairment</b>, is a major cause of childhood visual
+              impairment. Unlike typical eye disorders, CVI arises in the brain’s visual
+              processing areas. The eyes may be healthy, but the brain struggles to
+              interpret what they see — causing difficulty with recognition, tracking,
+              and spatial awareness.
+            </p>
+
+            <p>
+              CVI is not an eye disease but a <b>neurological condition</b>. With early
+              detection and therapy, children can develop stronger visual understanding.
+              CVI affects up to <b>30% of children under age 3</b> with vision loss,
+              highlighting the need for awareness and intervention.
+            </p>
+
+            {/* ===== Causes ===== */}
+            <h2 className="text-xl sm:text-2xl font-semibold text-[#F2C94C] pt-6 text-center md:text-left">
+              Causes of CVI
+            </h2>
+            <p>
+              CVI often stems from brain injury or oxygen deprivation affecting the
+              visual cortex and related neural pathways:
+            </p>
+            <ul className="list-disc list-inside space-y-2 pl-3 text-left">
+              <li>
+                <b>Perinatal complications:</b> Lack of oxygen, prematurity, or low birth
+                weight.
+              </li>
+              <li>
+                <b>Infections:</b> Meningitis, encephalitis, or congenital infections like
+                CMV.
+              </li>
+              <li>
+                <b>Neurological disorders:</b> Cerebral palsy, hydrocephalus, epilepsy, or
+                brain injury.
+              </li>
+              <li>
+                <b>Genetic causes:</b> Rare syndromes like Down syndrome or metabolic
+                conditions.
+              </li>
+            </ul>
+
+            {/* ===== Symptoms ===== */}
+            <h2 className="text-xl sm:text-2xl font-semibold text-[#F2C94C] pt-6 text-center md:text-left">
+              Symptoms and Signs
+            </h2>
+            <p>
+              Symptoms can vary daily and depend on the child’s fatigue or environment.
+              CVI often causes fluctuating vision and difficulty recognizing objects.
+            </p>
+            <ul className="list-disc list-inside space-y-2 pl-3 text-left">
+              <li>Difficulty seeing fine details, even with glasses</li>
+              <li>Prefers lights or edges over main objects</li>
+              <li>Struggles with clutter or visual crowding</li>
+              <li>May not recognize familiar faces or shapes easily</li>
+              <li>Relies more on sound or touch than sight</li>
+            </ul>
+
+            {/* ===== Diagnosis ===== */}
+            <h2 className="text-xl sm:text-2xl font-semibold text-[#F2C94C] pt-6 text-center md:text-left">
+              Diagnosis of CVI
+            </h2>
+            <p>
+              A comprehensive team-based evaluation helps differentiate CVI from other
+              eye conditions:
+            </p>
+            <ul className="list-disc list-inside space-y-2 pl-3 text-left">
+              <li>Full eye exam and optic nerve evaluation</li>
+              <li>Review of birth and medical history</li>
+              <li>Brain imaging (MRI or CT) for visual cortex damage</li>
+              <li>
+                Functional vision testing using <b>CVI Range Assessment</b>
+              </li>
+              <li>
+                Collaboration with occupational and physical therapists for functional
+                assessment
+              </li>
+            </ul>
+
+            {/* ===== Treatment ===== */}
+            <h2 className="text-xl sm:text-2xl font-semibold text-[#F2C94C] pt-6 text-center md:text-left">
+              Treatment & Management Strategies
+            </h2>
+            <p>
+              Though CVI has no cure, structured intervention can harness{" "}
+              <b>neuroplasticity</b> — the brain’s ability to rewire itself:
+            </p>
+            <ul className="list-disc list-inside space-y-2 pl-3 text-left">
+              <li>
+                <b>Vision Therapy:</b> Targeted sessions to build focus and tracking.
+              </li>
+              <li>
+                <b>Environmental Adaptations:</b> Simplify surroundings, add color
+                contrast, and control brightness.
+              </li>
+              <li>
+                <b>Multidisciplinary Support:</b> Combine occupational, physical, and
+                educational therapies.
+              </li>
+              <li>
+                <b>Medical Support:</b> Manage epilepsy or related neurological issues.
+              </li>
+              <li>
+                <b>Parent Involvement:</b> Encourage active exploration and name objects
+                during play.
+              </li>
+            </ul>
+
+            {/* ===== Hope Section ===== */}
+            <h2 className="text-xl sm:text-2xl font-semibold text-[#F2C94C] pt-6 text-center md:text-left">
+              Living with CVI: Hope & Growth
+            </h2>
+            <p>
+              Children with CVI can thrive with the right approach. With consistent
+              therapy, support, and understanding, many gain meaningful visual function
+              and independence.
+            </p>
+            <ul className="list-disc list-inside space-y-2 pl-3 text-left">
+              <li>Improved object recognition and tracking</li>
+              <li>Better attention and participation in daily life</li>
+              <li>Enhanced confidence through visual exploration</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+
+      <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="fixed bottom-6 right-6 z-50 bg-[#4d9feb] text-white text-3xl font-bold
+                         w-14 h-14 flex items-center justify-center rounded-full
+                         shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:bg-[#6fb5ff] hover:scale-110 
+                         hover:shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-300"
+            >
+              ^
+            </button>
+
+            {/* ========================================================= */}
+      {/* FOOTER */}
+      {/* ========================================================= */}
+      <footer
+        className={`w-full border-t overflow-hidden ${
+          theme === "light"
+            ? "bg-[#f9fafc] text-[#1F2E40] border-gray-300"
+            : "bg-[#0b1332] text-white border-white/10"
+        }`}
+      >
+        {/* Top */}
+        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+          {/* Left Info */}
+          <div className="text-center md:text-left space-y-2">
+            <h3
+              className={`text-2xl font-bold tracking-wide ${
+                theme === "light" ? "text-[#1F2E40]" : "text-[#F2C94C]"
+              }`}
+            >
+              FineVision Eye Care & Vision Therapy Center
+            </h3>
+            <p className="text-sm opacity-80 max-w-md">
+              Enhancing vision, empowering lives — with personalized eye care and
+              advanced therapy.
+            </p>
+          </div>
+
+          {/* Social */}
+          <div className="flex items-center gap-6 text-2xl">
+            <a
+              href="https://www.instagram.com/finevision_clinic?utm_source=qr&igsh=a2Z6b3pnNGxteGdz"
+              target="_blank"
+              className="hover:text-[#E4405F] transition"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href="https://www.facebook.com/share/1ButdPKkw3/"
+              target="_blank"
+              className="hover:text-[#1877F2] transition"
+            >
+              <FaFacebook />
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className={`border-t ${theme === "light" ? "border-gray-300" : "border-white/10"}`}>
+          <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-sm opacity-80">
+            <p>
+              © {new Date().getFullYear()} FineVision Eye Care & Vision Therapy Center. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6 mt-2 md:mt-0">
+              <a href="#" className="hover:text-[#4d9feb] transition">Privacy Policy</a>
+              <a href="#" className="hover:text-[#4d9feb] transition">Terms & Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }

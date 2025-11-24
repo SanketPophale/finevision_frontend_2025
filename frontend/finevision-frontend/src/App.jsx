@@ -6,8 +6,6 @@ import Register from "./pages/Register";
 import PatientForm from "./pages/PatientForm";
 import VisionTherapy from "./pages/VisionTherapy";
 import SportsVision from "./pages/SportsVision";
-import ContactUs from "./pages/ContactUs";
-import Blog from "./pages/Blog";
 import DoctorInfo from "./pages/DoctorInfo";
 import SplashScreen from "./components/SplashScreen"; 
 import AmblyopiaPage from "./pages/AmblyopiaPage";
@@ -20,6 +18,10 @@ import CorticalVisual from "./pages/CorticalVisual";
 import Autism from "./pages/Austim";
 import FAQSection from "./components/FAQSection";
 import BinocularVisionPage from "./pages/BinocularVisionPage";
+import ReviewPage from "./pages/ReviewPage";
+import PostStroke from "./pages/PostStroke";
+import ScrollToHash from "./components/ScrollHAsh";
+
 
 
 export default function App() {
@@ -40,6 +42,8 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 transition-opacity duration-700 ease-in-out">
       <main className="flex-1">
+        <>
+        <ScrollToHash />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/vision-therapy/amblyopia" element={<AmblyopiaPage />} />
@@ -49,6 +53,7 @@ export default function App() {
           <Route path="/vision-therapy/visual" element={<CorticalVisual />} />
           <Route path="/vision-therapy/austim" element={<Autism/>} />
           <Route path="/vision-therapy/binocular" element={<BinocularVisionPage/>} />
+          <Route path="/vision-therapy/post" element={<PostStroke/>} />
           <Route path="/about" element={<DoctorInfo />} />
           <Route path="/eye-care" element={<EyeCare />} />
           <Route path="/login" element={<Login />} />
@@ -57,11 +62,11 @@ export default function App() {
           <Route path="/faq" element={<FAQSection />} />
           <Route path="/vision-therapy" element={<VisionTherapy />} />
           <Route path="/sports-vision/sportsvision" element={<SportsVision />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
+          <Route path="/reviews" element={<ReviewPage />} />
 
         </Routes>
+        </>
       </main>
     </div>
   );
