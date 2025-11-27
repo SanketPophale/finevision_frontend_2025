@@ -32,7 +32,20 @@ export default function Home() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  const [showScrollTop, setShowScrollTop] = useState(false);
+   
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 150) {
+        setShowScrollTop(true);
+    } else {  
+      setShowScrollTop(false);
+  }
+};
 
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const [menuOpen, setMenuOpen] = useState(false);
 
   // -------------------- CONTACT FORM -------------------- //
@@ -85,7 +98,7 @@ const handleSubmit = (e) => {
  Service Required: ${service}
  Gender: ${gender}
 
-📝 *Primary Symptoms / Reason:* 
+ Primary Symptoms / Reason:
 ${symptoms}
 `;
 
@@ -296,7 +309,8 @@ ${symptoms}
       className="relative z-10 w-full lg:w-1/2 flex flex-col justify-center items-start text-left space-y-6 md:space-y-8 text-center lg:text-left"
     >
       <p
-        className={`text-xl sm:text-2xl font-semibold italic ${
+        className={`text-xl sm:text-2xl font-semibold italic pt-10 sm:pt-12 md:pt-14
+                    mt-[env(safe-area-inset-top)] ${
           theme === "light" ? "text-[#3d614b]" : "text-[#a4b8ff]"
         }`}
       >
@@ -1004,7 +1018,7 @@ ${symptoms}
 
 <button
   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-  className="
+  className={`
     fixed z-50
     bottom-20 right-4         /* extra safe distance for Samsung */
     sm:bottom-6 sm:right-6
@@ -1019,7 +1033,9 @@ ${symptoms}
     hover:scale-110 
     hover:shadow-[0_10px_40px_rgba(0,0,0,0.5)]
     transition-all duration-300
-  "
+  
+    ${showScrollTop ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none" }
+    `}
 >
   ^
 </button>

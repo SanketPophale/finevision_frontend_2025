@@ -18,15 +18,17 @@ export default function SplashScreen({ onFinish }) {
       className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-sky-100 via-blue-300 to-white"
     >
       
-      {/* 🌟 Welcome Message */}
       <Motion.h2
-        className="text-xl sm:text-2xl text-blue-900 font-semibold mb-4 tracking-wide"
+        className="text-xl sm:text-2xl text-blue-900 font-semibold mb-4 tracking-wide text-center leading-tight"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-        Welcome to Finevision Eye Care & Vision Therapy Centre 
+       >
+       Welcome to Finevision Eye Care <br />
+        <span className="block text-2xl">&</span>
+        <span className="block">Vision Therapy Centre</span>
       </Motion.h2>
+
 
 
       {/* Logo */}

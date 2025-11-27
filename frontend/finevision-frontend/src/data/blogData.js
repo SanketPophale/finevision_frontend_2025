@@ -69,6 +69,10 @@ export const blogsData = [
 
     <p style="color:#d1d5db"><b>Schedule your consultation today and discover how Vision Therapy can transform your child’s life.</b></p>
   `,
+  seoTitle: "How Vision Therapy Helps Children | FineVision Pune",
+  seoDescription: "A complete giide on how vision therapy helps children improve focus, and visual processing.",
+  seoImage: blog1,
+   
 },
 
   {
@@ -130,6 +134,9 @@ export const blogsData = [
 
     <p style="color:#d1d5db"><b>Contact us today</b> to start your journey toward stronger, sharper, and more efficient vision.</p>
   `,
+  seoTitle: "The Transformative Power of Vision Therapy | FineVision Pune",
+  seoDescription: "Discover how vision therapy can help improve eye coordination, reduce strain, and enhance visual performance.",
+  seoImage: blog22,
 },
 
 
@@ -174,6 +181,9 @@ export const blogsData = [
       In doing so, Picasso not only revolutionized the art world but also provided insight into the nature of human perception itself. By breaking down familiar objects into their basic components and reassembling them in new and unexpected ways, Picasso invited viewers to reconsider their preconceived notions of form, space, and representation. In much the same way that we recognize the letter “N” across a diverse array of fonts, so too can we appreciate the beauty and complexity of the human form in all its myriad variations.
     </p>
   `,
+  seoTitle: "The Remarkable Versatility of Human Form Perception | FineVision Pune",
+  seoDescription: "Explore how our minds interpret human forms through art and perception, inspired by Picasso's work.",
+  seoImage: blog3,
 },
 
 
@@ -284,6 +294,9 @@ export const blogsData = [
       <b>Awareness and proactive management</b> are key to controlling myopia. With timely intervention and the latest optical solutions, optometrists can help children and adults maintain clear, healthy vision.
     </p>
   `,
+  seoTitle: "Understanding Myopia: Causes, Prevention, and Latest Treatments | FineVision Pune",
+  seoDescription: "Learn about myopia causes, prevention strategies, and the latest treatments to manage nearsightedness effectively.",
+  seoImage: blog4,
 },
 
 {
@@ -360,6 +373,9 @@ export const blogsData = [
       <b>Make sure you add these superfoods to your diet regime and enjoy optimal eye health for a much longer period of time.</b>
     </p>
   `,
+  seoTitle: "Good Food For Good Eyes! | FineVision Pune",
+  seoDescription: "Discover the best foods for eye health, including carrots, leafy greens, nuts, and fish rich in essential nutrients.",
+  seoImage: blog5,
 },
 
 
@@ -474,6 +490,9 @@ export const blogsData = [
       <b>If you suspect vision challenges are affecting your child’s schoolwork, a customised vision therapy plan at Finevision Eye Care & Vision Therapy Centre can help them gain the confidence and skills needed to thrive academically.</b>
     </p>
   `,
+  seoTitle: "Is Your Child Struggling in School? Hidden Vision Problems Every Parent Should Know | FineVision Pune",
+  seoDescription: "Learn about hidden vision problems that can affect children's learning and how vision therapy can help improve their academic performance.",
+  seoImage: blog6,
 }
 
 

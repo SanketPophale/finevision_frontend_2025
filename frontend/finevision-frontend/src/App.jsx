@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import PatientForm from "./pages/PatientForm";
 import VisionTherapy from "./pages/VisionTherapy";
 import SportsVision from "./pages/SportsVision";
 import DoctorInfo from "./pages/DoctorInfo";
@@ -58,7 +57,6 @@ export default function App() {
           <Route path="/eye-care" element={<EyeCare />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/patient-form" element={<PatientForm />} />
           <Route path="/faq" element={<FAQSection />} />
           <Route path="/vision-therapy" element={<VisionTherapy />} />
           <Route path="/sports-vision/sportsvision" element={<SportsVision />} />
