@@ -38,28 +38,7 @@ export default function BlogDetail() {
 
   return (
     <>
-     <Helmet>
-        <title>{blog.seoTitle || blog.title}</title>
-
-        <meta 
-          name="description" 
-          content={blog.seoDescription || blog.description || blog.title} 
-        />
-
-        <meta name="keywords" content={blog.category || "vision therapy, finevision blog, eye care"} />
-
-        <meta property="og:title" content={blog.seoTitle || blog.title} />
-        <meta property="og:description" content={blog.seoDescription || blog.description || blog.title} />
-        <meta property="og:image" content={blog.seoImage || blog.image} />
-        <meta property="og:url" content={`https://thefinevision.com/blog/${blog.id}`} />
-        <meta property="og:type" content="article" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={blog.seoTitle || blog.title} />
-        <meta name="twitter:description" content={blog.seoDescription || blog.description || blog.title} />
-        <meta name="twitter:image" content={blog.seoImage || blog.image} />
-      </Helmet>
-      
+     
       {/* ===== Navbar (UPDATED) ===== */}
       <Navbar theme={theme} toggleTheme={toggleTheme} navigate={navigate} />
 
