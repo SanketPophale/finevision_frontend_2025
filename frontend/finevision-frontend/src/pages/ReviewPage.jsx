@@ -2,7 +2,8 @@ import { motion as Motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Element } from "react-scroll";
-import { Helmet } from "react-helmet";
+import React from "react";
+
 
 export default function Reviews() {
   const [theme] = useState(() => localStorage.getItem("theme") || "dark");
@@ -85,34 +86,7 @@ export default function Reviews() {
 
   return (
     <Element name="reviews"> {/* ⭐️ Added for navbar scroll */}
-       <Helmet>
-        <title>Patient Reviews | FineVision Eye Care & Vision Therapy Centre</title>
-        <meta 
-          name="description" 
-          content="Read real patient reviews about FineVision Eye Care & Vision Therapy Centre. Trusted for Vision Therapy, Lazy Eye Treatment, Sports Vision Training, and Pediatric Eye Care in Pune." 
-        />
-        <meta 
-          name="keywords" 
-          content="patient reviews, finevision reviews, vision therapy reviews, eye care feedback pune, lazy eye treatment reviews, sports vision training reviews" 
-        />
-
-        <meta property="og:title" content="Patient Reviews | FineVision Pune" />
-        <meta 
-          property="og:description" 
-          content="See what patients say about their experience with Vision Therapy & Eye Care at FineVision." 
-        />
-        <meta property="og:image" content="/eye.png" />
-        <meta property="og:url" content="https://thefinevision.com/reviews" />
-        <meta property="og:type" content="article" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Patient Reviews | FineVision Pune" />
-        <meta 
-          name="twitter:description" 
-          content="Real patient experiences from Vision Therapy and Eye Care programs at FineVision Eye Care Centre." 
-        />
-        <meta name="twitter:image" content="/eye.png" />
-      </Helmet>
+    
       <div
         className={`pt-32 min-h-screen flex flex-col items-center relative overflow-hidden ${
           theme === "light"
