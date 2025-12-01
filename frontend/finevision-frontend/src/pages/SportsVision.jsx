@@ -32,7 +32,8 @@ export default function SportsVision() {
 
   // ✅ Back to Vision Therapy
   const goBackToSection = () => {
-    navigate("/");
+    navigate("/#sports-vision");
+
     setTimeout(() => {
       const section = document.querySelector('[name="sports-vision"]');
       if (section) section.scrollIntoView({ behavior: "smooth" });

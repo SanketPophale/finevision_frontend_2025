@@ -18,7 +18,7 @@ import Autism from "./pages/Austim";
 import FAQSection from "./components/FAQSection";
 import BinocularVisionPage from "./pages/BinocularVisionPage";
 import ReviewPage from "./pages/ReviewPage";
-import PostStroke from "./pages/PostStroke";
+import PostStrokePage from "./pages/PostStroke";
 import ScrollToHash from "./components/ScrollHAsh";
 
 
@@ -52,7 +52,7 @@ export default function App() {
           <Route path="/vision-therapy/visual" element={<CorticalVisual />} />
           <Route path="/vision-therapy/austim" element={<Autism/>} />
           <Route path="/vision-therapy/binocular" element={<BinocularVisionPage/>} />
-          <Route path="/vision-therapy/post" element={<PostStroke/>} />
+          <Route path="/vision-therapy/post-stroke" element={<PostStrokePage/>} />
           <Route path="/about" element={<DoctorInfo />} />
           <Route path="/eye-care" element={<EyeCare />} />
           <Route path="/login" element={<Login />} />

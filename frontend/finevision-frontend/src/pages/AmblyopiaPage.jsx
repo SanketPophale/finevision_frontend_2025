@@ -16,7 +16,7 @@ export default function AmblyopiaPage() {
   }, []);
 
 const goToVisionTherapy = () => {
-  navigate("/");
+  navigate("/#vision-therapy");
 
   const checkElement = setInterval(() => {
     const section = document.querySelector('[name="vision-therapy"]');

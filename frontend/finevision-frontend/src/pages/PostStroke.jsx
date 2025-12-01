@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar";
 import postImg from "../assets/post3.png"
 import { Helmet } from "react-helmet";
 
+import { FaInstagram, FaFacebook } from "react-icons/fa";
+
 export default function PostStrokePage() {
   const navigate = useNavigate();
 
@@ -14,7 +16,8 @@ export default function PostStrokePage() {
 
   // Go back to Vision Therapy section
   const goToVisionTherapy = () => {
-    navigate("/");
+    navigate("/#vision-therapy");
+
     setTimeout(() => {
       const section = document.querySelector('[name="vision-therapy"]');
       if (section) section.scrollIntoView({ behavior: "smooth" });

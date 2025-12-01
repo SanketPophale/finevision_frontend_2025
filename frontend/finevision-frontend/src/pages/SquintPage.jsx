@@ -16,7 +16,8 @@ export default function SquintPage() {
 
   // ✅ Back to Vision Therapy
   const goToVisionTherapy = () => {
-    navigate("/");
+    navigate("/#vision-therapy");
+
     setTimeout(() => {
       const section = document.querySelector('[name="vision-therapy"]');
       if (section) section.scrollIntoView({ behavior: "smooth" });

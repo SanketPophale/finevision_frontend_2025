@@ -38,7 +38,6 @@ export default function BlogDetail() {
 
   return (
     <>
-     
       {/* ===== Navbar (UPDATED) ===== */}
       <Navbar theme={theme} toggleTheme={toggleTheme} navigate={navigate} />
 

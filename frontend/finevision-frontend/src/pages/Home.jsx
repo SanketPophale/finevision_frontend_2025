@@ -591,7 +591,7 @@ ${symptoms}
             {
               title: "Post Stroke",
               subtitle: "Regain visual independence after stroke.",
-              path: "/vision-therapy/post",
+              path: "/vision-therapy/post-stroke",
             },
           ].map((card, i) => (
             <Motion.div

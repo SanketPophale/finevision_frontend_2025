@@ -11,7 +11,8 @@ export default function VisionTherapy() {
   const navigate = useNavigate();
 
   const goBackToSection = () => {
-    navigate("/");
+    navigate("/#vision-therapy");
+
     setTimeout(() => {
       const section = document.querySelector('[name="vision-therapy"]');
       if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
