@@ -204,9 +204,10 @@ ${symptoms}
             VISION
           </span>
         </h1>
-        <p className="text-xs md:text-sm italic opacity-80">
-          Eye Care & Vision Therapy Center
+        <p className="text-[10px] sm:text-xs md:text-sm italic opacity-80 whitespace-nowrap">
+           Eye Care & Vision Therapy Center
         </p>
+
       </div>
     </div>
 
